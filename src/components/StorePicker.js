@@ -6,12 +6,11 @@ class StorePicker extends React.Component {
 
   goToStore = (event) => {
     event.preventDefault();
-    console.log(this);
+    const storeName = this.myInput.current.value;
+
+    this.props.history.push(`/store/${storeName}`);
   };
-  componentDidMount() {
-    console.log("Mounted");
-    console.log(this);
-  }
+
   render() {
     return (
       <form className="store-selector" onSubmit={this.goToStore}>
