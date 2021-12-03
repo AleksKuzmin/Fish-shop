@@ -1,13 +1,15 @@
 import React from "react";
 
 class EditFishForm extends React.Component {
-  hangleChange = (event) => {
+  handleChange = (event) => {
     console.log(event.currentTarget.value);
+    // update that fish
+    // 1. Take a copy of the curernt fish
     const updatedFish = {
       ...this.props.fish,
       [event.currentTarget.name]: event.currentTarget.value,
     };
-    this.props.updatedFish(key, updatedFish)
+    this.props.updateFish(this.props.index, updatedFish);
   };
   render() {
     return (
@@ -30,8 +32,8 @@ class EditFishForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.fish.status}
         >
-          <option value="avaiable"> Fresh! </option>
-          <option value="unavaiable"> Sold out! </option>
+          <option value="available">Fresh!</option>
+          <option value="unavailable">Sold Out!</option>
         </select>
         <textarea
           name="desc"
@@ -44,6 +46,7 @@ class EditFishForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.fish.image}
         />
+        <button onClick={() => this.props.deleteFish(this.props.index)}> Remove Fish</button>
       </div>
     );
   }

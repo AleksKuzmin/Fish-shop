@@ -5,6 +5,7 @@ import Inventory from "./Inventory";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 import base from "../base";
+import EditFishForm from "./EditFishForm";
 
 class App extends React.Component {
   state = {
@@ -49,6 +50,13 @@ class App extends React.Component {
     fishes[key] = updatedFish;
     this.setState({ fishes });
   };
+
+  deleteFish = (key) => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = null;
+    this.setState({ fishes });
+  };
+
   loadSampleFishes = () => {
     this.setState({ fishes: sampleFishes });
   };
@@ -78,7 +86,8 @@ class App extends React.Component {
         <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
-          addFish={this.updateFish}
+          deleteFish={this.deleteFish}
+          updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
         />
