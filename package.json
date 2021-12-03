@@ -1,6 +1,6 @@
 {
-  "name": "Fishshop",
-  "version": "0.0.1",
+  "name": "Fish-shop",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "concurrently": "6.4.0",
